@@ -9,7 +9,7 @@ class LibpngConan(ConanFile):
     name = "libpng"
     version = "1.6.34"
     description = "libpng is the official PNG file format reference library. "
-    url="http://github.com/bincrafters/conan-libpng"
+    url="http://github.com/bitprim/conan-libpng"
     license = "Libpng"
     exports = ["LICENSE.md"]
     exports_sources = ["CMakeLists.txt", "FindPNG.cmake"]
