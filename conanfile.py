@@ -20,7 +20,7 @@ class LibpngConan(ConanFile):
     ZIP_FOLDER_NAME = "%s-%s" % (name, version)
 
     def requirements(self):
-        self.requires.add("zlib/1.2.11@conan/stable")
+        self.requires.add("zlib/1.2.11@bitprim/stable")
 
     def config_options(self):
         if self.settings.os == "Windows":
