@@ -17,6 +17,9 @@ class LibpngConan(ConanFile):
     settings = "os", "arch", "compiler", "build_type"
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = "shared=False", "fPIC=True"
+
+    build_policy = "missing"
+
     ZIP_FOLDER_NAME = "%s-%s" % (name, version)
 
     def requirements(self):
@@ -27,7 +30,7 @@ class LibpngConan(ConanFile):
             self.options.remove("fPIC")
 
     def configure(self):
-        del self.settings.compiler.libcxx
+        del self.settings.compiler.libcxx       #Pure-C
         
     def source(self):
         base_url = "https://sourceforge.net/projects/libpng/files/libpng16/"
