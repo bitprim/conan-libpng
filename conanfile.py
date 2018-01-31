@@ -52,7 +52,7 @@ class LibpngConan(ConanFile):
         cmake.definitions["PNG_SHARED"] = self.options.shared
         cmake.definitions["PNG_STATIC"] = not self.options.shared
         cmake.definitions["PNG_DEBUG"] = "OFF" if self.settings.build_type == "Release" else "ON"
-        if self.settings.os != "Visual Studio":
+        if self.settings.compiler != "Visual Studio":
             cmake.definitions["CMAKE_POSITION_INDEPENDENT_CODE"] = self.options.fPIC
         cmake.configure()
         cmake.build()
