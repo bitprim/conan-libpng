@@ -26,11 +26,12 @@ class LibpngConan(ConanFile):
         self.requires.add("zlib/1.2.11@bitprim/stable")
 
     def config_options(self):
-        if self.settings.os == "Windows":
+        # if self.settings.os == "Windows":
+        if self.settings.compiler == "Visual Studio":
             self.options.remove("fPIC")
 
     def configure(self):
-        del self.settings.compiler.libcxx       #Pure-C
+        del self.settings.compiler.libcxx       #Pure-C Library
         
     def source(self):
         base_url = "https://sourceforge.net/projects/libpng/files/libpng16/"
