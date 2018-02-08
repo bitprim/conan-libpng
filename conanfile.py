@@ -43,7 +43,6 @@ class LibpngConan(ConanFile):
         else:
             return self.options.shared
 
-
     def requirements(self):
         self.requires.add("zlib/1.2.11@bitprim/stable")
 
@@ -54,7 +53,6 @@ class LibpngConan(ConanFile):
 
             if self.options.shared and self.msvc_mt_build:
                 self.options.remove("shared")
-
 
     def configure(self):
         del self.settings.compiler.libcxx       #Pure-C Library
@@ -74,7 +72,7 @@ class LibpngConan(ConanFile):
             tools.replace_in_file("%s/CMakeLists.txt" % self.ZIP_FOLDER_NAME, 'COMMAND "${CMAKE_COMMAND}" -E copy_if_different $<TARGET_LINKER_FILE_NAME:${S_TARGET}> $<TARGET_LINKER_FILE_DIR:${S_TARGET}>/${DEST_FILE}',
                                   'COMMAND "${CMAKE_COMMAND}" -E copy_if_different $<TARGET_LINKER_FILE_DIR:${S_TARGET}>/$<TARGET_LINKER_FILE_NAME:${S_TARGET}> $<TARGET_LINKER_FILE_DIR:${S_TARGET}>/${DEST_FILE}')
         cmake = CMake(self)
-        cmake.definitions["PNG_TESTS"] = "OFF"
+        cmake.definitions["PNG_TESTS"] = "ON"
         cmake.definitions["PNG_SHARED"] = self.is_shared
         cmake.definitions["PNG_STATIC"] = not self.is_shared
         cmake.definitions["PNG_DEBUG"] = "OFF" if self.settings.build_type == "Release" else "ON"
